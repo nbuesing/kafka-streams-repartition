@@ -1,0 +1,196 @@
+state_fips,state,state_abbr,zipcode,county,city
+27,Minnesota,MN,55001,Washington,Afton
+27,Minnesota,MN,55003,Washington,Bayport
+27,Minnesota,MN,55010,Dakota,Castle rock
+27,Minnesota,MN,55016,Washington,Cottage grove
+27,Minnesota,MN,55020,Scott,Elko
+27,Minnesota,MN,55024,Dakota,Farmington
+27,Minnesota,MN,55025,Washington,Forest lake
+27,Minnesota,MN,55026,Goodhue,Frontenac
+27,Minnesota,MN,55027,Goodhue,Goodhue
+27,Minnesota,MN,55031,Dakota,Hampton
+27,Minnesota,MN,55033,Dakota,Welch
+27,Minnesota,MN,55038,Washington,Centerville
+27,Minnesota,MN,55040,Isanti,Isanti
+27,Minnesota,MN,55041,Wabasha,Lake city
+27,Minnesota,MN,55042,Washington,Lake elmo
+27,Minnesota,MN,55043,Washington,Lakeland
+27,Minnesota,MN,55044,Dakota,Lakeville
+27,Minnesota,MN,55045,Chisago,Lindstrom
+27,Minnesota,MN,55046,Rice,Veseli
+27,Minnesota,MN,55047,Washington,Marine on saint
+27,Minnesota,MN,55049,Steele,Medford
+27,Minnesota,MN,55051,Kanabec,Mora
+27,Minnesota,MN,55052,Rice,Morristown
+27,Minnesota,MN,55053,Rice,Nerstrand
+27,Minnesota,MN,55055,Washington,Newport
+27,Minnesota,MN,55056,Chisago,North branch
+27,Minnesota,MN,55057,Rice,Northfield
+27,Minnesota,MN,55060,Steele,Owatonna
+27,Minnesota,MN,55063,Pine,Beroun
+27,Minnesota,MN,55065,Dakota,Randolph
+27,Minnesota,MN,55066,Goodhue,Red wing
+27,Minnesota,MN,55068,Dakota,Rosemount
+27,Minnesota,MN,55069,Chisago,Rush city
+27,Minnesota,MN,55070,Anoka,Saint francis
+27,Minnesota,MN,55071,Washington,Saint paul park
+27,Minnesota,MN,55072,Pine,Markville
+27,Minnesota,MN,55073,Washington,Scandia
+27,Minnesota,MN,55074,Chisago,Shafer
+27,Minnesota,MN,55075,Dakota,South saint paul
+27,Minnesota,MN,55076,Dakota,Inver grove heig
+27,Minnesota,MN,55077,Dakota,Inver grove heig
+27,Minnesota,MN,55079,Anoka,Stacy
+27,Minnesota,MN,55080,Isanti,Stanchfield
+27,Minnesota,MN,55082,Washington,Oak park heights
+27,Minnesota,MN,55084,Chisago,Taylors falls
+27,Minnesota,MN,55085,Dakota,Vermillion
+27,Minnesota,MN,55087,Rice,Warsaw
+27,Minnesota,MN,55088,Rice,Webster
+27,Minnesota,MN,55089,Goodhue,Welch
+27,Minnesota,MN,55090,Washington,Willernie
+27,Minnesota,MN,55101,Ramsey,Saint paul
+27,Minnesota,MN,55102,Ramsey,Saint paul
+27,Minnesota,MN,55103,Ramsey,Saint paul
+27,Minnesota,MN,55104,Ramsey,Saint paul
+27,Minnesota,MN,55105,Ramsey,Saint paul
+27,Minnesota,MN,55106,Ramsey,Saint paul
+27,Minnesota,MN,55107,Ramsey,West saint paul
+27,Minnesota,MN,55108,Ramsey,Lauderdale
+27,Minnesota,MN,55109,Ramsey,North saint paul
+27,Minnesota,MN,55110,Ramsey,White bear lake
+27,Minnesota,MN,55112,Ramsey,New brighton
+27,Minnesota,MN,55113,Ramsey,Roseville
+27,Minnesota,MN,55114,Ramsey,Saint paul
+27,Minnesota,MN,55115,Washington,White bear lake
+27,Minnesota,MN,55116,Ramsey,Saint paul
+27,Minnesota,MN,55117,Ramsey,Little canada
+27,Minnesota,MN,55118,Dakota,West saint paul
+27,Minnesota,MN,55119,Ramsey,Maplewood
+27,Minnesota,MN,55120,Dakota,Eagan
+27,Minnesota,MN,55121,Dakota,Eagan
+27,Minnesota,MN,55122,Dakota,Eagan
+27,Minnesota,MN,55123,Dakota,Eagan
+27,Minnesota,MN,55124,Dakota,Apple valley
+27,Minnesota,MN,55125,Washington,Woodbury
+27,Minnesota,MN,55126,Ramsey,Shoreview
+27,Minnesota,MN,55127,Ramsey,Vadnais heights
+27,Minnesota,MN,55128,Washington,Oakdale
+27,Minnesota,MN,55129,Washington,Zcta 55129
+27,Minnesota,MN,55150,Dakota,Mendota
+27,Minnesota,MN,55301,Wright,Albertville
+27,Minnesota,MN,55302,Wright,Annandale
+27,Minnesota,MN,55303,Anoka,Ramsey
+27,Minnesota,MN,55304,Anoka,Ham lake
+27,Minnesota,MN,55305,Hennepin,Minnetonka
+27,Minnesota,MN,55306,Dakota,Burnsville
+27,Minnesota,MN,55307,Sibley,Arlington
+27,Minnesota,MN,55308,Sherburne,Becker
+27,Minnesota,MN,55309,Sherburne,Big lake
+27,Minnesota,MN,55310,Renville,Bird island
+27,Minnesota,MN,55311,Hennepin,Maple grove
+27,Minnesota,MN,55312,McLeod,Brownton
+27,Minnesota,MN,55313,Wright,Buffalo
+27,Minnesota,MN,55314,Renville,Buffalo lake
+27,Minnesota,MN,55315,Carver,Carver
+27,Minnesota,MN,55316,Hennepin,Champlin
+27,Minnesota,MN,55317,Carver,Chanhassen
+27,Minnesota,MN,55318,Carver,Chaska
+27,Minnesota,MN,55319,Sherburne,Clear lake
+27,Minnesota,MN,55320,Wright,Clearwater
+27,Minnesota,MN,55321,Wright,Cokato
+27,Minnesota,MN,55322,Carver,Cologne
+27,Minnesota,MN,55324,Meeker,Darwin
+27,Minnesota,MN,55325,Meeker,Dassel
+27,Minnesota,MN,55327,Hennepin,Dayton
+27,Minnesota,MN,55328,Wright,Delano
+27,Minnesota,MN,55329,Stearns,Eden valley
+27,Minnesota,MN,55330,Sherburne,Elk river
+27,Minnesota,MN,55331,Hennepin,Excelsior
+27,Minnesota,MN,55332,Renville,Fairfax
+27,Minnesota,MN,55333,Renville,Franklin
+27,Minnesota,MN,55334,Sibley,Gaylord
+27,Minnesota,MN,55335,Sibley,Gibbon
+27,Minnesota,MN,55336,McLeod,Glencoe
+27,Minnesota,MN,55337,Dakota,Burnsville
+27,Minnesota,MN,55338,Sibley,Green isle
+27,Minnesota,MN,55339,Carver,Hamburg
+27,Minnesota,MN,55340,Hennepin,Hamel
+27,Minnesota,MN,55341,Wright,Hanover
+27,Minnesota,MN,55342,Renville,Hector
+27,Minnesota,MN,55343,Hennepin,Eden prairie
+27,Minnesota,MN,55344,Hennepin,Eden prairie
+27,Minnesota,MN,55345,Hennepin,Minnetonka
+27,Minnesota,MN,55346,Hennepin,Eden prairie
+27,Minnesota,MN,55347,Hennepin,Eden prairie
+27,Minnesota,MN,55349,Wright,Howard lake
+27,Minnesota,MN,55350,McLeod,Hutchinson
+27,Minnesota,MN,55352,Scott,Jordan
+27,Minnesota,MN,55353,Stearns,Kimball
+27,Minnesota,MN,55354,McLeod,Lester prairie
+27,Minnesota,MN,55355,Meeker,Litchfield
+27,Minnesota,MN,55356,Hennepin,Long lake
+27,Minnesota,MN,55357,Hennepin,Loretto
+27,Minnesota,MN,55358,Wright,Maple lake
+27,Minnesota,MN,55359,Hennepin,Maple plain
+27,Minnesota,MN,55360,Carver,Mayer
+27,Minnesota,MN,55362,Wright,Monticello
+27,Minnesota,MN,55363,Wright,Montrose
+27,Minnesota,MN,55364,Hennepin,Mound
+27,Minnesota,MN,55367,Carver,New germany
+27,Minnesota,MN,55368,Carver,Norwood
+27,Minnesota,MN,55369,Hennepin,Maple grove
+27,Minnesota,MN,55370,McLeod,Plato
+27,Minnesota,MN,55371,Mille Lacs,Princeton
+27,Minnesota,MN,55372,Scott,Prior lake
+27,Minnesota,MN,55373,Wright,Rockford
+27,Minnesota,MN,55374,Hennepin,Rogers
+27,Minnesota,MN,55375,Hennepin,Bible college
+27,Minnesota,MN,55376,Wright,Saint michael
+27,Minnesota,MN,55378,Scott,Savage
+27,Minnesota,MN,55379,Scott,Shakopee
+27,Minnesota,MN,55381,McLeod,Silver lake
+27,Minnesota,MN,55382,Stearns,South haven
+27,Minnesota,MN,55384,Hennepin,Spring park
+27,Minnesota,MN,55385,McLeod,Stewart
+27,Minnesota,MN,55386,Carver,Victoria
+27,Minnesota,MN,55387,Carver,Waconia
+27,Minnesota,MN,55388,Carver,Watertown
+27,Minnesota,MN,55389,Meeker,Watkins
+27,Minnesota,MN,55390,Wright,Waverly
+27,Minnesota,MN,55391,Hennepin,Wayzata
+27,Minnesota,MN,55395,McLeod,Winsted
+27,Minnesota,MN,55396,Sibley,Winthrop
+27,Minnesota,MN,55397,Carver,Young america
+27,Minnesota,MN,55398,Sherburne,Zimmerman
+27,Minnesota,MN,55401,Hennepin,Minneapolis
+27,Minnesota,MN,55402,Hennepin,Minneapolis
+27,Minnesota,MN,55403,Hennepin,Minneapolis
+27,Minnesota,MN,55404,Hennepin,Minneapolis
+27,Minnesota,MN,55405,Hennepin,Minneapolis
+27,Minnesota,MN,55406,Hennepin,Minneapolis
+27,Minnesota,MN,55407,Hennepin,Minneapolis
+27,Minnesota,MN,55408,Hennepin,Minneapolis
+27,Minnesota,MN,55409,Hennepin,Minneapolis
+27,Minnesota,MN,55410,Hennepin,Edina
+27,Minnesota,MN,55411,Hennepin,Minneapolis
+27,Minnesota,MN,55412,Hennepin,Minneapolis
+27,Minnesota,MN,55413,Hennepin,Minneapolis
+27,Minnesota,MN,55414,Hennepin,Minneapolis
+27,Minnesota,MN,55415,Hennepin,Minneapolis
+27,Minnesota,MN,55416,Hennepin,Saint louis park
+27,Minnesota,MN,55417,Hennepin,Minneapolis
+27,Minnesota,MN,55418,Hennepin,Minneapolis
+27,Minnesota,MN,55419,Hennepin,Minneapolis
+27,Minnesota,MN,55420,Hennepin,Bloomington
+27,Minnesota,MN,55421,Anoka,Columbia heights
+27,Minnesota,MN,55422,Hennepin,Robbinsdale
+27,Minnesota,MN,55423,Hennepin,Richfield
+27,Minnesota,MN,55424,Hennepin,Edina
+27,Minnesota,MN,55425,Hennepin,Bloomington
+27,Minnesota,MN,55426,Hennepin,Saint louis park
+27,Minnesota,MN,55427,Hennepin,Golden valley
+27,Minnesota,MN,55428,Hennepin,Crystal
+27,Minnesota,MN,55429,Hennepin,Brooklyn center
+27,Minnesota,MN,55430,Hennepin,Brooklyn center
+27,Minnesota,MN,55431,Hennepin,Bloomington

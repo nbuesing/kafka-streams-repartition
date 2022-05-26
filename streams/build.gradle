@@ -1,0 +1,39 @@
+
+dependencies {
+    implementation project(':common')
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: kafka_version
+    //implementation group: 'org.rocksdb', name: 'rocksdbjni', version: '6.29.4.1'
+    constraints {
+        implementation("org.rocksdb:rocksdbjni:6.29.4.1") {
+            because("Mac M1")
+        }
+    }
+}
+
+application {
+    mainClass = "dev.buesing.ksd.${project.name}.Main"
+    //applicationDefaultJvmArgs = ['-javaagent:./jmx_prometheus/jmx_prometheus_javaagent.jar=7071:./docker/streams-config.yml']
+}
+
+task buildDockerImage(type: Exec) {
+    inputs.files 'Dockerfile'
+    commandLine 'docker', 'rmi', "nbuesing/ksd_${project.name}:latest"
+    commandLine 'docker', 'build', '-t', "nbuesing/ksd_${project.name}:latest", '.'
+}
+
+//task createRunScript() {
+////  dependsOn build
+//
+//  def cp = sourceSets.main.runtimeClasspath.join(":")
+//
+//  doLast {
+//    def f = new File(projectDir, "run.sh")
+//    f.text = """#!/bin/sh
+//java -cp \"${cp}\" dev.buesing.ksd.${project.name}.Main \$*
+//"""
+//   f.setExecutable(true)
+//  }
+//}
+//
+////build.finalizedBy buildDockerImage
+//build.finalizedBy createRunScript

@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+.gradle
+grafana.db
+build
+run.sh
+/tmp
+/streams/tmp
+.settings
+.classpath
+.project
+/druid/storage
+/applications/stores/*
+
+/statestore-ui/node_modules

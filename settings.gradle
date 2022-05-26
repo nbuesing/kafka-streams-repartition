@@ -1,0 +1,16 @@
+rootProject.name = 'kafka-streams-repartition'
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+	}
+}
+
+include 'common'
+include 'builder'
+include 'publisher'
+include 'restore'
+include 'streams'
+

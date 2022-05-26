@@ -1,0 +1,46 @@
+networks:
+  default:
+    external: true
+    name: ksd
+
+services:
+
+  stream_v1:
+    image: nbuesing/ksd_streams:latest
+    #hostname: stream
+    #container_name: stream
+    stop_grace_period: 120s
+    healthcheck:
+      test: /healthcheck.sh || exit 1
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+    volumes:
+      - ./streams.properties:/streams.properties
+      - ./scripts:/scripts
+    environment:
+      BOOTSTRAP_SERVERS: broker-1:9092,broker-2:9092,broker-3:9092
+      CLIENT_ID_PREFIX: "stream_v1"
+
+  stream_v2:
+    image: nbuesing/ksd_streams:latest
+    #hostname: stream
+    #container_name: stream
+    stop_grace_period: 120s
+    healthcheck:
+      test: /healthcheck.sh || exit 1
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    deploy:
+      replicas: 2
+    volumes:
+      - ./streams.properties:/streams.properties
+      - ./scripts:/scripts
+    environment:
+      BOOTSTRAP_SERVERS: broker-1:9092,broker-2:9092,broker-3:9092
+      CLIENT_ID_PREFIX: "stream_v2"

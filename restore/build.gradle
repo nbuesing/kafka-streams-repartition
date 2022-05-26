@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(':common')
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: kafka_version
+    implementation group: 'org.rocksdb', name: 'rocksdbjni', version: '7.1.2'
+}
+
+application {
+    mainClass = "dev.buesing.ksd.${project.name}.Main"
+}
+
