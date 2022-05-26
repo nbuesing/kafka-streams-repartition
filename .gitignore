@@ -6,6 +6,7 @@ build
 run.sh
 /tmp
 /streams/tmp
+/restore/tmp
 .settings
 .classpath
 .project

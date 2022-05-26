@@ -1,9 +1,7 @@
 package dev.buesing.ksd.common.domain;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +17,7 @@ public class ProductStatsV2 {
     private long quantity = 0L;
     private int orders = 0;
     private Map<String, Long> quantityByStore = new HashMap<>();
+    private List<String> orderIds = new ArrayList<>(); // capturing this to show successful restoration
 
     // needed for serializers
     @SuppressWarnings("unused")
@@ -42,6 +41,8 @@ public class ProductStatsV2 {
         this.quantity += quantity;
 
         quantityByStore.put(purchaseOrder.getStoreId(), (long) quantityByStore.getOrDefault(purchaseOrder.getStoreId(), 0L) + quantity);
+
+        this.getOrderIds().add(purchaseOrder.getOrderId());
     }
 
     public void merge(final ProductStatsV1 productStatsV1) {
@@ -53,5 +54,7 @@ public class ProductStatsV2 {
             final String storeId = Integer.toString(storeQuantity.getStoreId());
             quantityByStore.put(Integer.toString(storeQuantity.getStoreId()), quantityByStore.getOrDefault(storeId, 0L) + (long) storeQuantity.getQuantity());
         });
+
+        this.orderIds.addAll(productStatsV1.getOrderIds());
     }
 }

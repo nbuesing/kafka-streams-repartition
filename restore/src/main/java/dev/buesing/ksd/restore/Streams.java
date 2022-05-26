@@ -1,28 +1,23 @@
 package dev.buesing.ksd.restore;
 
-import dev.buesing.ksd.common.domain.*;
+import dev.buesing.ksd.common.domain.ProductStatsV1;
 import dev.buesing.ksd.tools.serde.JsonSerde;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.errors.InvalidConfigurationException;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;
 import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.errors.LogAndContinueExceptionHandler;
 import org.apache.kafka.streams.errors.StreamsUncaughtExceptionHandler;
 import org.apache.kafka.streams.kstream.*;
-import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.*;
 
 @Slf4j
@@ -134,7 +129,7 @@ public class Streams {
                 .reduce((incoming, aggregate) -> incoming, Named.as("reduce"), productMaterializedV1)
                 //.suppress(Suppressed.untilTimeLimit())
                 .toStream(Named.as("toStream"))
-                .to(options.getProductPurchasedRestore() + "-v2", Produced.as("to"));
+                .to(options.getVersionedProductPurchasedRestore(), Produced.as("to"));
 
         return builder;
     }

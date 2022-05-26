@@ -8,12 +8,7 @@ import java.util.concurrent.Future;
 
 public class Main {
 
-    final static Thread.UncaughtExceptionHandler exceptionHandler = new Thread.UncaughtExceptionHandler() {
-        @Override
-        public void uncaughtException(Thread t, Throwable e) {
-            System.err.println("Uncaught exception in thread '" + t.getName() + "': " + e.getMessage());
-        }
-    };
+    final static Thread.UncaughtExceptionHandler exceptionHandler = (t, e) -> System.err.println("Uncaught exception in thread '" + t.getName() + "': " + e.getMessage());
 
     public static void main(String[] args) throws Exception {
 
@@ -22,14 +17,10 @@ public class Main {
         if (options == null) {
             return;
         }
-//
-//        final Streams stream = new Streams();
-//
-//        stream.start(options);
 
         final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
             final Thread t = Executors.defaultThreadFactory().newThread(r);
-            //t.setDaemon(true);
+            t.setDaemon(true);
             t.setUncaughtExceptionHandler(exceptionHandler);
             return t;
         });
@@ -41,7 +32,7 @@ public class Main {
         try {
             future.get();
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 }

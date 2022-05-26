@@ -12,8 +12,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.Duration;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -49,66 +51,57 @@ public class Restore {
 
     public void start() {
 
-        final KafkaConsumer<String, ProductStatsV1> consumer = new KafkaConsumer<>(consumer(options));
+        try (KafkaConsumer<String, ProductStatsV1> consumer = new KafkaConsumer<>(consumer(options))) {
 
-        consumer.subscribe(Collections.singleton("order-processor-v1-product-purchased-store-changelog"));
+            consumer.subscribe(Collections.singleton(options.getChangelogTopic()));
 
-        init();
+            initRocksDB();
 
-        boolean processing = true;
+            boolean noLag = false;
 
-        while (processing) {
+            while (!noLag) {
 
-            log.info("processing)");
+                log.info("Consuming");
 
-            ConsumerRecords<String, ProductStatsV1> records = consumer.poll(Duration.ofMillis(500L));
-
-            try {
-                List<PartitionInfo> p = consumer.partitionsFor("order-processor-v1-product-purchased-store-changelog");
-                boolean done = p.stream().map(i -> new TopicPartition(i.topic(), i.partition())).allMatch(t -> {
-                    OptionalLong optionalLong = consumer.currentLag(t);
-                    System.out.println(">> " + optionalLong.getAsLong());
-                    return optionalLong.isPresent() && optionalLong.getAsLong() == 0;
-                });
-                processing = done;
-            } catch (final Exception e) {
-                System.out.println(e.getMessage());
-            }
-
-            //TODO dedup...
-
-            records.forEach(record -> {
-
-                String key = record.key();
-                ProductStatsV1 value = record.value();
-
-                log.info("storing key={}", key);
+                final ConsumerRecords<String, ProductStatsV1> records = consumer.poll(Duration.ofMillis(500L));
 
                 try {
-                    rocksDB.put(key.getBytes(), toBytes(value));
-                } catch (final RocksDBException e) {
-                    throw new RuntimeException(e);
+                    List<PartitionInfo> p = consumer.partitionsFor(options.getChangelogTopic());
+                    noLag = p.stream().map(i -> new TopicPartition(i.topic(), i.partition())).allMatch(t -> {
+                        final long lag = consumer.currentLag(t).orElse(-1);
+                        log.debug("partition={}, current-lag={}", t.partition(), lag);
+                        return lag == 0;
+                    });
+                } catch (final Exception e) {
+                    log.info("unable to get partition info or consumer lag for topic={}", options.getChangelogTopic());
                 }
-            });
 
-            //TODO on lag...
-            //  processing = false;
+                records.forEach(record -> {
+                    final String key = record.key();
+                    log.info("storing key={}", key);
+                    try {
+                        rocksDB.put(key.getBytes(), toBytes(record.value()));
+                    } catch (final RocksDBException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
 
         }
 
-        consumer.close();
-
         try (KafkaProducer<String, ProductStatsV1> producer = new KafkaProducer<>(producer(options))) {
 
+            log.info("Producing");
+
+            // iterate over the entire RocksDB state-store.
             RocksIterator iterator = rocksDB.newIterator();
 
             for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-                //iterator.status();
-                String key = new String(iterator.key(), StandardCharsets.UTF_8);
-                ProductStatsV1 value = fromBytes(iterator.value());
+                final String key = new String(iterator.key(), StandardCharsets.UTF_8);
+                final ProductStatsV1 value = fromBytes(iterator.value());
 
                 log.info("Sending key={}", key);
-                producer.send(new ProducerRecord<>(options.getProductPurchasedRestore() + "-v2", null, key, value, null), (metadata, exception) -> {
+                producer.send(new ProducerRecord<>(options.getVersionedProductPurchasedRestore(), null, key, value, null), (metadata, exception) -> {
                     if (exception != null) {
                         log.error("error producing to kafka", exception);
                     } else {
@@ -120,8 +113,8 @@ public class Restore {
             iterator.close();
         }
 
-        //producer.close();
-        //consumer.close();
+        log.info("fully completed.");
+
     }
 
     private Map<String, Object> consumer(final Options options) {
@@ -132,7 +125,7 @@ public class Restore {
                 Map.entry(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class.getName()),
                 Map.entry(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"),
                 Map.entry(ConsumerConfig.ISOLATION_LEVEL_CONFIG, "read_committed"),
-                Map.entry(ConsumerConfig.GROUP_ID_CONFIG, "order-processor-restore")
+                Map.entry(ConsumerConfig.GROUP_ID_CONFIG, options.getGroupId())
         );
     }
 
@@ -147,11 +140,11 @@ public class Restore {
     }
 
 
-    private void init() {
+    private void initRocksDB() {
         RocksDB.loadLibrary();
         final org.rocksdb.Options options = new org.rocksdb.Options();
         options.setCreateIfMissing(true);
-        File dbDir = new File("/tmp/rocks-db", "STORE");
+        final File dbDir = new File(this.options.getStateDir(), this.options.getGroupId());
         try {
             Files.createDirectories(dbDir.getParentFile().toPath());
             Files.createDirectories(dbDir.getAbsoluteFile().toPath());

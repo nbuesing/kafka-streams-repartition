@@ -32,6 +32,7 @@ public class ProductStatsV1 {
     private Integer quantity = 0;
     private Integer orders = 0;
     private List<StoreQuantity> quantityByStore = new ArrayList<>();
+    private List<String> orderIds = new ArrayList<>(); // capturing this to show successful restoration
 
     // needed for serializers
     @SuppressWarnings("unused")
@@ -63,6 +64,8 @@ public class ProductStatsV1 {
         } else {
             this.quantityByStore.add(new StoreQuantity(storeId, quantity));
         }
+
+        this.getOrderIds().add(purchaseOrder.getOrderId());
     }
 
 }
